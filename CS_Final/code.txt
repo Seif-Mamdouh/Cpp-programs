@@ -1,0 +1,345 @@
+//Final Exam
+#include<iostream>
+#include<fstream>
+#include<cstdio>
+#include<curses.h>
+#include<string>
+//#include<conio.h>
+#include<stdio.h>
+//#include<process.h>
+using namespace std;
+
+class Student
+{
+    int admno;
+    char name[50];
+public:
+    void setData()
+    {
+        cout << "\nEnter admission no: ";
+        cin >> admno;
+        cin.ignore();
+        cout << "Enter name of student: ";
+        cin.getline(name,50);
+    }
+
+    void showData()
+    {
+        cout << "\nAdmission no. : " << admno;
+        cout << "\nStudent Name : " << name;
+    }
+	 
+    int retAdmno()
+    {
+        return admno;
+    }
+};
+
+
+
+void Create(string & name)       //Function to Create Data File
+{  
+    cout<<"What would like to name it? ";
+           cin>>name;
+           cout<<endl;
+   
+   ofstream outFile;
+   outFile.open( name ,ios::out| ios::binary);
+   
+
+   outFile.close();
+}
+
+void write_record_append(string & name)   //function to write and append records in a binary file.
+{
+    
+    
+    ofstream outFile;
+    outFile.open(name, ios::binary | ios::app); 
+
+    Student obj;
+    obj.setData();
+    
+    outFile.write((char*)&obj, sizeof(obj));
+    
+    outFile.close();
+}
+
+void display(string & name)   //function to display records of file
+{
+    /*std::string filename;
+    std::cin>>filename;*/
+    ifstream inFile;
+    inFile.open(name, ios::binary);
+
+    Student obj;
+    
+    while(inFile.read((char*)&obj, sizeof(obj)))
+    {
+        obj.showData();
+    }        
+    
+    inFile.close();
+    cout<<endl<<endl;
+}
+
+void search(int n, string & name) //function to search and display from binary file
+{
+    /*std::string filename;
+    std::cin>>filename;*/
+    ifstream inFile;
+    inFile.open(name, ios::binary);
+    
+    Student obj;
+
+    while(inFile.read((char*)&obj, sizeof(obj)))
+    {
+        if(obj.retAdmno() == n)
+        {
+            obj.showData();
+        }
+    }
+    
+    inFile.close();
+    cout<<endl<<endl; 
+}
+
+
+void delete_record(int n, string & name) //function to delete a record
+{
+    Student obj;
+    ifstream inFile;
+    inFile.open(name, ios::binary);
+
+    ofstream outFile;
+    outFile.open("Output.dat", ios::out | ios::binary);
+    
+    while(inFile.read((char*)&obj, sizeof(obj)))
+    {
+        if(obj.retAdmno() != n)
+        {
+            outFile.write((char*)&obj, sizeof(obj));
+        }
+    }
+
+    inFile.close();
+    outFile.close();
+    cout<<endl<<endl<<endl;
+    
+    remove(name.c_str());
+    rename("Output.dat", name.c_str());
+
+}
+
+
+void modify_record(int n, string & name)  //function to modify a record
+{
+    fstream file;
+    file.open(name,ios::in | ios::out);
+
+    Student obj;
+
+    while(file.read((char*)&obj, sizeof(obj)))
+    {
+        if(obj.retAdmno() == n)
+        {
+            cout << "\nEnter the new details of student";
+            obj.setData();
+            
+            int pos = -1 * sizeof(obj);
+            file.seekp(pos, ios::cur);
+			
+            file.write((char*)&obj, sizeof(obj));
+        }
+    }
+  
+    file.close();
+    cout<<endl<<endl;
+}
+
+void append(string name) //apend
+{
+    ofstream fout;  // Create Object of Ofstream
+    ifstream fin;
+    fin.open(name);
+    fout.open (name,ios::app); // Append mode
+    if(fin.is_open())
+        fout<< "\n Writing to a file opened from program.\n"; // Writing data to file
+    cout<<"\n Data has been appended to file";
+    fin.close();
+    fout.close();  // Closing the file
+    cout<<endl<<endl;
+}
+
+void sortFile(Student name){
+    fstream f1("file2.dat",ios::binary|ios::ate|ios::in|ios::out);
+    int i=0;
+    Student obj1,obj2;
+    long size=f1.tellg()/sizeof(name);
+    for(i=0;i<size-1;++i)
+    {
+        for(int j=i+1;j<size-1-i;++j)
+        {
+            f1.read((char*)&obj1,sizeof(obj1));
+            f1.read((char*)&obj2,sizeof(obj2));
+            if(obj1.retAdmno() > obj2.retAdmno())
+            {
+                f1.seekp(-48,ios::cur);
+                f1.write((char*)&obj2,sizeof(obj2));
+                f1.write((char*)&obj1,sizeof(obj1));
+                f1.seekp(-24,ios::cur);
+            }
+        }
+    }
+                f1.close();
+}
+
+int main()
+{
+    bool going_on = false;
+    int option; 
+    string name = "null";
+    int record_num;
+    char answer;
+    do{
+
+        cout<<"1.Create Data File"<<endl;
+        cout<<"2.Add New Record in Data File"<<endl;
+        cout<<"3.Display Record From Data File"<<endl;
+        cout<<"4.Display Particular Record From Data File"<<endl;
+        cout<<"5.Modify Paricular Record From Data File"<<endl;
+        cout<<"6.Append Record From Data File"<<endl;
+        cout<<"7.Sort Record From Data File"<<endl;
+        cout<<"8.Delete Particular Record From Data File"<<endl;
+        cout<<"9.Exit From the Program"<<endl;
+        cout<<"Enter your Option : ";
+        cin>>option;
+
+       switch(option) {
+           case 1 :
+           Create(name);
+           break; 
+           
+           case 2 :
+           if (name != "null"){
+               write_record(name);   
+           }
+           else {
+               cout<<"\nplease create a data file\n";
+           }
+           break; 
+           
+           // you can have any number of case statements.
+           
+           case 3 :
+           //Display Record From Data File
+           cout << "\nList of records";
+           if (name != "null") {
+               display(name);
+           }
+           else {
+               cout<<"\nplease create a data file\n";
+           }
+           break; 
+
+           case 4 :
+           //Search record
+           cout<<"\nSerach record";
+           if (name != "null"){
+               cout<<"\nWhicg Record would like to search for? ";
+               cin>>record_num;
+               cout << "\nSearch result";
+               search(record_num, name);
+           }
+           else {
+               cout<<"\nplease create a data file\n";
+           }
+           break; 
+           
+           case 5 :
+           //Modify Paricular Record From Data File
+           cout << "\nModify Record ";
+           if (name != "null"){
+               cout<< "\nWhich Record would you like to modify? ";
+               cin>>record_num;
+               modify_record(record_num, name);
+           }
+           else {
+               cout<<"\nplease create a data file\n";
+           }
+           break; 
+
+           case 6: 
+           //append record
+           cout<<"\nAppend Record";
+           {
+               ofstream outFile("ForgetCodeWrite.out");
+               if (outFile.fail()) {
+                   cerr << "Unable to open file for writing." << endl;
+                   exit(1);
+                   }
+                   outFile << "ForgetCode!" << endl;
+                   outFile.close();
+                   ofstream append("ForgetCodeWrite.out", ios_base::app);
+                   if (append.fail()) {
+                       cerr << "Unable to open file for writing." << endl;
+                       exit(1);
+                       }
+                       append << "Appending Features!!" << endl;
+                       append.close();
+                }
+                       break;
+                       
+            
+            case 7:
+            cout<<"\n Sort File";
+            
+
+
+           case 8 :
+           //Delete record 
+           cout<<"\nDelete Record";
+           cout<<"\nAre you sure you want to delete the record?";
+           cout<<"\n press y/n";
+           cin>>answer;
+
+           if (answer == 'y' || answer == 'Y' || name != "null" ){
+               cout<<"\nWhich record would you like to delete? ";
+               cin>>record_num;
+               delete_record(record_num, name);
+               cout << "\nRecord Deleted";
+           }
+
+           /*elif (name != "null"){
+               cout<<"\nWhich record would you like to delete? ";
+               cin>>record_num;
+               delete_record(record_num, name);
+               cout << "\nRecord Deleted";
+           }*/
+
+           else if(answer == 'n' || answer =='N'){
+               exit(0);
+           }
+           else {
+               cout<<"\nplease create a data file\n";
+           }
+           break; 
+           
+           case 9 :
+           cout<<"C Ya!"<<endl;
+           exit(0);
+           going_on = false;
+           break; 
+
+           default :
+           //invalid input 
+           cout<<"Invalid number, please choose 1-8"<<endl;
+           cout<<endl<<endl;
+           going_on = true;
+           }
+
+
+    } while ( going_on = true );
+    return 0;
+    
+}
