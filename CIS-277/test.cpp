@@ -89,20 +89,25 @@ void displayQueue()
 //function to check if Queue is empty
 bool isEmpty()
 {
+    bool empty = true;
+    bool isNotEmpty = false;
+
     if (isempty())
-        return true;
+        return empty;
     else
-        return false;
+        return isNotEmpty;
 }
 
 //function to check if Queue is full
-
 bool fullCheck()
 {
+    bool check = false;
+    bool full = true;
+
     if ((rear + 1) % SIZE == front)
-        return true;
+        return full;
     else
-        return false;
+        return check;
 }
 
 //function to purge the Queue
@@ -146,13 +151,11 @@ int main()
             break;
 
         case 5:
-            isEmpty();
-            displayQueue();
+            std::cout << std::boolalpha << isEmpty() << std::endl;
             break;
 
         case 6:
-            fullCheck();
-            displayQueue();
+            std::cout << std::boolalpha << fullCheck() << std::endl;
             break;
 
         case 7:
