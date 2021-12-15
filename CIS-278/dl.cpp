@@ -174,8 +174,7 @@ public:
         }
     }
     int delathead(){
-        if (head)
-        {
+        if (head){
             node *curr = head;
             int v = curr->info;
             if (head == tail)
@@ -211,8 +210,7 @@ public:
         return -1;
     }
 
-    int del(int v)
-    {
+    int del(int v){
         int c;
         if (head)
         {
@@ -251,14 +249,12 @@ public:
     }
 };
 
-int main()
-{
+int main(){
     int c, v, m;
     char ch, ans, id;
     string name, name1;
     Sll s;
-    do
-    {
+    do {
         cout << "\n1. Create";
         cout << "\n2. Add";
         cout << "\n3. Delete";
