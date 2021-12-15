@@ -1,0 +1,227 @@
+
+
+Home Page
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Event Booking</title>
+</head>
+<body>
+    <header id="home">
+      <nav>
+        <h1>EventKing</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#add-event">New Event</a></li>
+        </ul>
+      </nav>
+      <div class="welcome-event"></div>
+    </header>
+    <main>
+        <section id="events">
+            <h1 class="section-title">Events</h1>
+            <div class="events-container"></div>
+        </section>
+        <section id="add-event">
+            <h1 class="section-title">New Event</h1>
+            <form class="form">
+                <input type="text" id="name" placeholder="Name">
+                <input type="number" id="attendee" placeholder="Attendees">
+                <textarea id="description" cols="30" rows="10" placeholder="Description..."></textarea>
+                <select id="status">
+                    <option value="0">Free</option>
+                    <option value="1">Paid</option>
+                </select>
+                <button class="btn btn-primary">Save</button>
+            </form>
+        </section>
+    </main>
+
+
+Card Section
+          <div class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Paragraph development progresses with the 
+            expression of some type of support or evidence for the idea and 
+            the explanation that came before it. 
+            The example serves as a sign or representation of the relationship established in 
+            the idea and explanation portions of the paragraph.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+      <div class="card" style href ="style.css">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+      <div 3 class="card" style="width: 18rem;">
+        <img src="..." class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Card title</h5>
+          <p class="card-text">Idk what's going on but these hoes aint shit, bottom line!.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+
+        <header id = "home">
+            <nav class = "navbar">
+                <h1>Eventic</h1>
+                <ul><li><a href="index.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="bookAnEvent.html"></a></li>
+                </ul></ul>
+            </nav>
+            
+            <div class="Welcome-Events"></div>
+        </header>
+
+        <main>
+            <section id="events">
+                <h1 class = "section-title">New Event</h1>
+                <form class "form">
+                    <input type="text" id="name" placeholder="Name">
+                <input type="number" id="attendee" placeholder="Attendees">
+                <textarea id="description" cols="30" rows="10" placeholder="Description..."></textarea>
+                <select id="status">
+                    <option value="0">Option 1</option>
+                    <option value="1">Option 2</option>
+                </select>
+                <button class="btn btn-primary">Save</button>
+            </form>
+        </section>
+    </main>
+
+
+
+
+<!Contact form-->
+    <form>
+
+      <link rel="stylesheet" href="style.css">
+      
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+      
+    </head>
+  </body>
+</html>
+    
+
+
+
+
+
+html>
+    <head>
+        <title>Home</title><head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <link rel="stylesheet" href="style.css">
+          <title>Event Booking
+          </title>
+   
+    <nav>
+               
+        <h1>EventKing</h1>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#add-event">New Event</a></li>
+        </ul>
+           
+    </nav>
+
+  <body>
+        
+    <div>
+        <section id="events">
+            <h1 class="section-title">Events</h1>
+            <div class="events-container"></div>
+        </section>
+        <section id="add-event">
+            <h1 class="section-title">New Event</h1>
+            <form class="form">
+                <input type="text" id="name" placeholder="Name">
+                <input type="number" id="attendee" placeholder="Attendees">
+                <textarea id="description" cols="30" rows="10" placeholder="Description..."></textarea>
+                <select id="status">
+                    <option value="0">Free</option>
+                    <option value="1">Paid</option>
+                </select>
+                <button class="btn btn-primary">Save</button>
+            </form>
+        </section>
+    </div>
+
+   
+    </head>
+  </body>
+</html>
+    
+
+
+
+
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Dropdown
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Something else here</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+  </div>
+</nav>
